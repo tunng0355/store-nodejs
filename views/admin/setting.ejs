@@ -1,0 +1,105 @@
+<%-include('layouts/head')%>
+<div class="wrapper">
+  <%-include('layouts/navbar')%>
+  <%-include('layouts/header')%>
+  <div class="content-page">
+    <div class="content">
+      <!-- Start Content-->
+      <div class="container-fluid">
+        <div class="page-title-box mt-4">
+          <div class="card">
+            <div class="card-body">
+              <form
+                id="changePasswordForm"
+                action="/api/admin/setting"
+                method="post"
+                data-ajax
+              >
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="logo"
+                    placeholder="logo"
+                    value="<%-site.logo%>"
+                    name="logo"
+                  />
+                  <label for="logo">Logo</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="title"
+                    placeholder="Password"
+                    name="title"
+                    value="<%-site.title%>"
+                  />
+                  <label for="title">Tiêu đề website</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="description"
+                    style="height: 100px"
+                    name="description"
+                  >
+<%-site.description%></textarea
+                  >
+                  <label for="description">Mô tả</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <textarea
+                    class="form-control"
+                    placeholder="Leave a comment here"
+                    id="keyword"
+                    style="height: 100px"
+                    name="keyword"
+                  >
+<%-site.keyword%></textarea
+                  >
+                  <label for="keyword">Từ khóa</label>
+                </div>
+
+                <div class="form-floating mb-3">
+                  <input
+                    type="text"
+                    class="form-control"
+                    id="hotline"
+                    placeholder="Password"
+                    name="hotline"
+                    value="<%-site.hotline%>"
+                  />
+                  <label for="hotline">Hotline</label>
+                </div>
+                <div class="form-floating mb-3">
+                  <input
+                    type="number"
+                    class="form-control"
+                    id="vat"
+                    placeholder="Password"
+                    name="vat"
+                    value="<%-site.vat%>"
+                  />
+                  <label for="vat">Cấu hình thuế VAT</label>
+                </div>
+                <button
+                  type="submit"
+                  style="height: 3rem"
+                  class="btn btn-primary btn-big w-100"
+                >
+                  Cập nhập
+                </button>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-include('layouts/script')%>
+<%-include('layouts/end')%>

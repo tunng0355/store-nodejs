@@ -1,0 +1,254 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full pt-[10px]">
+  <div class="w-full pt-0 pb-0">
+    <div class="w-full">
+      <div class="max-w-6xl mx-auto">
+        <div class="w-full my-10">
+          <div>
+            <div
+              class="flex items-center font-[400] text-[13px] text-black mb-[23px]"
+            >
+              <a href="/" class="capitalize">
+                <img
+                  src="https://i.imgur.com/FFjafxI.png"
+                  alt=""
+                  width="17"
+                  height="17"
+                  class="mx-1 mb-2"
+              /></a>
+              <span class="sperator">/</span>
+              <span>
+                <a href="/profile">
+                  <span class="mx-1 capitalize">Hồ sơ</span>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="w-full bg-white px-10 py-3 lg:py-9 border">
+            <div class="w-full flex justify-between items-center">
+              <h1 class="text-[22px] font-bold text-black">
+                Tổng quan của bạn
+              </h1>
+            </div>
+            <div class="w-full mt-8 flex flex-col lg:flex-row lg:space-x-10">
+              <%-include('./menu')%>
+              <div class="flex-1 lg:w-[670px]">
+                <div class='col-span-1 lg:col-span-3'>
+                    <div class='border p-4 bg-white rounded-lg'>
+                        <div class='grid lg:grid-cols-6 grid-cols-1 gap-3 whitespace-nowrap'>
+                            <div class='floating-input relative'>
+                                <input
+                                    type="text"
+                                    id="name"
+                                    name="name"
+                               
+                                    
+                                    class='border border-gray-200 focus:outline-none rounded-md focus:border-[#1435c3] focus:shadow-sm w-full p-3 h-10 text-xs'
+                                    placeholder="Tên sản phẩm"
+                                />
+                            </div>
+                            <div class='floating-input relative'>
+                                <input
+                                    type="number"
+                                    id="priceFrom"
+                                    name="priceFrom"
+                                    value={searchParams.priceFrom}
+                                  
+                                    class='border border-gray-200 focus:outline-none rounded-md focus:border-[#1435c3] focus:shadow-sm w-full p-3 h-10 text-xs'
+                                    placeholder="Số tiền từ"
+                                />
+                            </div>
+                            <div class='floating-input relative'>
+                                <input
+                                    type="number"
+                                    id="priceTo"
+                                    name="priceTo"
+                                    
+                                    class='border border-gray-200 focus:outline-none rounded-md focus:border-[#1435c3] focus:shadow-sm w-full p-3 h-10 text-xs'
+                                    placeholder="Số tiền đến"
+                                />
+                            </div>
+                            <div class='floating-input relative'>
+                                <input
+                                    type="date"
+                                    id="startDate"
+                                    name="startDate"
+                                  
+                                    class='border border-gray-200 focus:outline-none rounded-md focus:border-[#1435c3] focus:shadow-sm w-full p-3 h-10 text-xs'
+                                    placeholder="Từ ngày"
+                                />
+                            </div>
+                            <div class='floating-input relative'>
+                                <input
+                                    type="date"
+                                    id="endDate"
+                                    name="endDate"
+                                   
+                                    class='border border-gray-200 focus:outline-none rounded-md focus:border-[#1435c3] focus:shadow-sm w-full p-3 h-10 text-xs'
+                                    placeholder="Đến ngày"
+                                />
+                            </div>
+                            <div class='h-11 lg:h-full w-full flex items-center flex-row lg:justify-center justify-end'>
+                                <button
+                                    type="button"
+                                   
+                                    class='pl-4 h-full pr-4 h-11 rounded-md pr-3 flex flex-row items-center bg-[#1435c3] text-white text-sm'
+                                >
+                                    <i class="fa-sharp fa-light fa-search"></i>
+                                    <span class='ml-2'>Tìm kiếm</span>
+                                </button>
+                            </div>
+                        </div>
+                        <div class=' overflow-auto pb-3 pt-3 w-full'>
+                            <table class='border-collapse whitespace-nowrap mt-3 border border-slate-500 w-full'>
+                                <thead class='text-xs'>
+                                    <tr>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Mã sản phẩm
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Loại
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Tên
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Giá gốc
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Loại giảm
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Giảm giá
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Giá tổng
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Số lượng
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Bổ sung
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Hình thức
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Khuyến mãi
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Áp dụng mã
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Trạng thái
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Thời gian
+                                        </th>
+                                        <th class='border border-gray-300 text-start bg-white text-gray-800 p-3'>
+                                            Thao tác
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody class='text-xs'>
+                                        <tr key={index}>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                #{item._id}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.type}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.name}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.price.value.format}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.Discount.type}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.Discount.text}
+                                            </td>
+                                            <td class='border border-gray-300 font-semibold text-start p-2' >
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.quantity}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.IS_additionalInfo}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.IS_Items}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.quantity}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.voucher}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.status}
+                                            </td>
+
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                {item.createdAt}
+                                            </td>
+                                            <td class='border border-gray-300 text-start p-2'>
+                                                <div class='flex flex-row items-center'>
+                                                    <button
+                                                        type="button"
+                                                        class='pl-3 rounded-md pr-3 h-8 bg-[#1435c3] text-white text-xs'
+                                                    >
+                                                        Chỉnh sửa
+                                                    </button>
+                                                    <button
+                                                        class='pl-3 flex items-center ml-2 rounded-md pr-3 h-8 bg-pink-500 text-white text-xs'
+                                                    >
+                                                        Cài đặt giá
+                                                    </button>
+
+                                                    <button
+                                                        type="button"
+                                                        class='pl-3 rounded-md ml-2 pr-3 h-8 bg-red-500 text-white text-xs'
+                                                    >
+                                                        XÓA
+                                                    </button>
+                                                </div>
+                                            </td>
+                                        </tr>
+                               
+                                </tbody>
+                            </table>
+                        </div>
+
+                        <div class='flex justify-center mt-4 flex-wrap'>
+                                <button
+                                    class='cursor-pointer px-4 py-2 rounded m-1 bg-gray-200 text-gray-800 hover:bg-gray-300'
+                                >
+                                    Previous
+                                </button>
+                        
+
+
+                                <button
+                                    class='cursor-pointer px-4 py-2 rounded m-1 bg-gray-200 text-gray-800 hover:bg-gray-300'
+                                >
+                                    Next
+                                </button>
+                     
+                        </div>
+                    </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<%-include('../layouts/footer')%> <%-include('../layouts/script') %>
+<%-include('../layouts/end')%>

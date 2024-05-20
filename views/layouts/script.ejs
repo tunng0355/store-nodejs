@@ -1,0 +1,116 @@
+<script src="https://code.jquery.com/jquery-3.7.0.min.js"></script>
+<script src="/js/main.js"></script>
+<script>
+  $(function () {
+    var path = window.location.pathname;
+    var activeElement = $(`.menu_profile > a[href="${path}"] > div`);
+
+    $('.menu_profile > a > div').addClass('text-slate-500 hover:text-black');
+
+    if (activeElement.length > 0) {
+      activeElement
+        .removeClass('text-slate-500 hover:text-black')
+        .addClass('text-blue-400');
+    }
+  });
+
+  $(document).click(function (e) {
+    var sidebar = $('._sidebar, .menu_side');
+    if (!sidebar.is(e.target) && sidebar.has(e.target).length === 0) {
+      $('._top').removeClass('left-0');
+      $('._top').addClass('left-[-250rem]');
+
+      $('._sidebar').removeClass('left-0');
+      $('._sidebar').addClass('left-[-250rem]');
+    }
+  });
+  $('.menu_side').click(() => {
+    $('._top').addClass('left-0');
+    $('._top').removeClass('left-[-250rem]');
+    $('._sidebar').addClass('left-0');
+    $('._sidebar').removeClass('left-[-250rem]');
+  });
+  $('.modal-btn').click(function (e) {
+    $(`.modal[modal-id="#${$(this).attr('id')}"]`).fadeIn(200);
+  });
+  $('.close-modal').click(function (e) {
+    $(`.modal[modal-id="${$(this).attr('modal-id')}"]`).fadeOut(200);
+  });
+  $(document).click(function (e) {
+    var modal = $('.modal-home, .modal-btn');
+    if (!modal.is(e.target) && modal.has(e.target).length === 0) {
+      $('.modal').fadeOut(200);
+    }
+  });
+
+  $(document).click(function (e) {
+    var nav_menu = $('.nav_menu, #toggle_menu');
+    if (!nav_menu.is(e.target) && nav_menu.has(e.target).length === 0) {
+      $('.nav_menu').slideUp(200);
+    }
+  });
+  $('#toggle_menu').click(() => $('.nav_menu').slideToggle(200));
+
+  $(document).click(function (e) {
+    var notify_menu = $('.notify_menu, #notify_nav');
+    if (!notify_menu.is(e.target) && notify_menu.has(e.target).length === 0) {
+      $('.notify_menu').fadeOut(200);
+    }
+  });
+  $('#notify_nav').click(() => $('.notify_menu').toggle(200));
+
+  function CurlHttp(url, method = 'GET', data = null) {
+    $.ajax({
+      url: url,
+      data: data,
+      type: method,
+      dataType: 'json',
+      statusCode: {
+        500: function () {
+          FuiToast.error('500 status code! server error');
+        },
+      },
+      success: (data) => {
+        if (!data) {
+          FuiToast.error('Không thể nhận dữ liệu về từ api này');
+        } else {
+          if (data.redirect == undefined && data.redirect == null) {
+            FuiToast.success(data.message);
+          } else {
+            setInterval(() => {
+              window.location.href = data.redirect;
+            }, 700);
+
+            FuiToast.success(data.message);
+          }
+        }
+      },
+      error: function (request) {
+        var data = JSON.parse(request.responseText);
+        if (!data) {
+          FuiToast.error('Không thể nhận dữ liệu về từ api này');
+        } else {
+          if (data.redirect == undefined && data.redirect == null) {
+            FuiToast.error(data.message);
+          } else {
+            setInterval(() => {
+              window.location.href = data.redirect;
+            }, 700);
+
+            FuiToast.error(data.message);
+          }
+        }
+      },
+    });
+  }
+
+  $('form[data-ajax]').submit(function (e) {
+    e.preventDefault();
+    CurlHttp(
+      $(this).attr('action'),
+      $(this).attr('method'),
+      $(this).serialize(),
+    );
+  });
+
+</script>

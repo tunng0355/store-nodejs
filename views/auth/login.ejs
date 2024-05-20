@@ -1,0 +1,95 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full">
+  <div class="max-w-2xl mx-auto">
+    <div class="w-full">
+      <div
+        class="mt-[3rem]"
+      >
+        <div class="relative">
+          <div
+            class="lg:w-[572px] w-full bg-white flex flex-col justify-center sm:p-10 p-5 border border-[#E0E0E0]"
+          >
+            <div class="w-full">
+              <div
+                class="flex flex-col font-bold text-2xl justify-center items-center relative text-center mb-7"
+              >
+                Đăng nhập
+              </div>
+            </div>
+            <form method="POST" action="/api/auth/login" data-ajax>
+              <div class="mb-5">
+                <div class="w-full h-full">
+                  <label
+                    class="block mb-2 text-gray text-[13px] font-normal"
+                    for="email"
+                    >Email *</label
+                  >
+                  <div
+                    class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                  >
+                    <input
+                      placeholder="example@gmail.com"
+                      class=" placeholder:text-sm text-sm px-3 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none h-[40px]"
+                      type="email"
+                      name="email"
+                      value="test12345@gmail.com"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="mb-5">
+                <div class="w-full h-full">
+                  <label
+                    class="block mb-2 text-gray text-[13px] font-normal"
+                    for="password"
+                    >Mật khẩu *</label
+                  >
+                  <div
+                    class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                  >
+                    <input
+                      placeholder="********"
+                      class=" placeholder:text-sm text-sm px-3 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none h-[40px]"
+                      type="password"
+                      name="password"
+                      value="test12345"
+                    />
+                  </div>
+                </div>
+              </div>
+              <div class="flex justify-end items-center mb-7">
+                <a class="text-base text-blue-500" href="/forgot-password">Quên mật khẩu ?</a>
+              </div>
+              <div class="mb-3.5">
+                <div class="flex justify-center ">
+                  <button class="mb-4 text-sm text-white w-full h-[45px] bg-[#1435c3] font-semibold flex justify-center bg-purple items-center rounded-md">
+                    <span>Đăng nhập</span>
+                  </button>
+                </div>
+              </div>
+              <div class="flex justify-center">
+                <p class="text-base text-gray-400 font-normal">Bạn chưa có tài khoản ?
+                  <a href="/auth/register"> 
+                  <span class="text-blue-500 ml-2">Đăng kí</span></a>
+                </p>
+                </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-include('../layouts/footer')%> <%-include('../layouts/script')%>
+<script>
+  var mySwiper = new Swiper('.swiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+</script>
+<%-include('../layouts/end')%>

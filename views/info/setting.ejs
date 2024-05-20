@@ -1,0 +1,159 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full pt-[10px]">
+  <div class="w-full pt-0 pb-0">
+    <div class="w-full">
+      <div class="max-w-6xl mx-auto">
+        <div class="w-full my-10">
+          <div>
+            <div
+              class="flex items-center font-[400] text-[13px] text-black mb-[23px]"
+            >
+              <a href="/" class="capitalize">
+                <img
+                  src="https://i.imgur.com/FFjafxI.png"
+                  alt=""
+                  width="17"
+                  height="17"
+                  class="mx-1 mb-2"
+              /></a>
+              <span class="sperator">/</span>
+              <span>
+                <a href="/profile">
+                  <span class="mx-1 capitalize">Hồ sơ</span>
+                </a>
+              </span>
+            </div>
+          </div>
+          <div class="w-full bg-white px-10 py-3 lg:py-9 border">
+            <div class="w-full flex justify-between items-center">
+              <h1 class="text-[22px] font-bold text-black">
+                Tổng quan của bạn
+              </h1>
+            </div>
+            <div class="w-full mt-8 flex flex-col lg:flex-row lg:space-x-10">
+              <%-include('./menu')%>
+              <div class="flex-1">
+                <div class="w-full">
+                  <form action="/api/user/change-info" method="POST" data-ajax>
+                    <div class="flex lg:flex-row flex-col-reverse lg:space-x-8">
+                      <div class="lg:w-[570px] w-full">
+                        <div class="flex space-x-2.5 mb-8">
+                          <div class="w-1/2 h-full">
+                            <div class="w-full h-full">
+                              <label
+                                class="capitalize block mb-2 text-gray text-[13px] font-normal"
+                                >Họ và tên *</label
+                              >
+                              <div
+                                class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                              >
+                                <input
+                                  placeholder="Nguyen Van A"
+                                  class="placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none h-[40px]"
+                                  type="text"
+                                  name="fullname"
+                                  value="<%-user.fullname%>"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w-1/2 h-full">
+                            <div class="w-full h-full">
+                              <label
+                                class="capitalize block mb-2 text-gray text-[13px] font-normal"
+                                >Tên tài khoản *</label
+                              >
+                              <div
+                                class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                              >
+                                <input
+                                  placeholder="Username"
+                                  class="placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none h-[40px]"
+                                  type="text"
+                                  name="username"
+                                  value="<%-user.username%>"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                        <div class="flex space-x-2.5 mb-8">
+                          <div class="w-1/2 h-full">
+                            <div class="w-full h-full">
+                              <label
+                                class="capitalize block mb-2 text-gray text-[13px] font-normal"
+                                >Email *</label
+                              >
+                              <div
+                                class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                              >
+                                <input
+                                  class="placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-gray focus:ring-0 focus:outline-none h-[40px]"
+                                  type="email"
+                                  name="email"
+                                  disabled=""
+                                  value="<%-user.email%>"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                          <div class="w-1/2 h-full">
+                            <div class="w-full h-full">
+                              <label
+                                class="capitalize block mb-2 text-gray text-[13px] font-normal"
+                                >Số điện thoại *</label
+                              >
+                              <div
+                                class="border border-gray w-full h-full overflow-hidden relative rounded-md"
+                              >
+                                <input
+                                  placeholder="012 3 *******"
+                                  class="placeholder:text-sm text-sm px-6 text-dark-gray w-full font-normal bg-white focus:ring-0 focus:outline-none h-[40px]"
+                                  type="number"
+                                  min="9"
+                                  name="phone"
+                                  value="<%-user.phone%>"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                      <div class="flex-1">
+                        <div class="w-full mb-9">
+                          <div class="flex xl:justify-center justify-start">
+                            <div class="relative">
+                              <div
+                                class="sm:w-[188px] sm:h-[188px] w-[189px] h-[189px] rounded-full overflow-hidden relative"
+                              >
+                                <img
+                                  src="https://ui-avatars.com/api/name=undefined"
+                                  class="object-cover w-full h-full"
+                                />
+                              </div>
+                            </div>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="flex space-x-4 items-center mb-7 lg:mb-0 ">
+                      <button
+                        type="submit"
+                        class="w-[164px] h-[50px] bg-black text-white text-sm rounded-lg"
+                        style="background: rgb(20, 53, 195); color: white"
+                      >
+                        Cập nhật thông tin
+                      </button>
+                    </div>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-include('../layouts/footer')%> <%-include('../layouts/script') %>
+<%-include('../layouts/end')%>

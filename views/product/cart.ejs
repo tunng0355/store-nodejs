@@ -1,0 +1,222 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full">
+  <div class="w-full pt-0 pb-0">
+    <div class="w-full bg-white pb-[60px]">
+      <div class="w-full">
+        <div class="bg-[#D3EFFF] w-full h-[173px] py-10">
+          <div class="max-w-7xl mx-auto">
+            <div class="mb-5">
+              <div>
+                <div
+                  class="flex items-center font-[400] text-[13px] text-black mb-[23px]"
+                >
+                  <a href="/" class="capitalize"
+                    ><img
+                      src="https://i.imgur.com/FFjafxI.png"
+                      alt=""
+                      width="17"
+                      height="17"
+                      class="mx-1 mb-2" /></a
+                  ><span class="sperator">/</span
+                  ><span
+                    ><a href="/cart"
+                      ><span class="mx-1 capitalize">Giỏ hàng</span></a
+                    ></span
+                  >
+                </div>
+              </div>
+            </div>
+            <div class="flex justify-center">
+              <h1 class="text-3xl font-semibold text-qblack">Giỏ hàng</h1>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="max-w-7xl mx-auto">
+        <div class="flex-1 overflow-y-auto px-4 py-6 sm:px-6">
+          <div class="flex items-start justify-between">
+            <h2 class="text-lg font-medium text-gray-900" id="slide-over-title">
+              Shopping cart
+            </h2>
+          </div>
+
+          <div class="mt-8">
+            <div class="flow-root">
+              <ul role="list" id="product_cart" class="-my-6 divide-y divide-gray-200">
+                
+                <% cartItems.forEach(function(obj, m) { %>
+                <li class="flex py-6" id="<%-obj.id%>">
+                  <div
+                    class="h-24 w-24 relative flex-shrink-0 overflow-hidden rounded-md border border-gray-200"
+                  >
+                    <img
+                      src="<%=obj.thumbnail[0].src%>"
+                      alt="<%=obj.thumbnail[0].alt%>"
+                      class="h-full w-full object-cover object-center"
+                    />
+                    <% if (obj.discount.value != 0) {%>
+
+                      <div
+                      class="w-[45px] h-[45px] rounded-full bg-yellow-400 text-black flex justify-center items-center text-sm font-medium absolute left-[5px] top-[5px]"
+                    >
+                      <span>-<%-obj.discount.value %><%-(obj.discount.type == "%") ? "%" : "đ"%></span>
+                    </div>
+                      <%}%>
+                  </div>
+
+                  <div class="ml-4 flex flex-1 flex-col">
+                    <div>
+                      <div
+                        class="flex justify-between text-base font-medium text-gray-900"
+                      >
+                        <h3>
+                          <a href="#"><%=obj.name%></a>
+                        </h3>
+                        <p class="ml-4 money_cart" value="<%-obj.price.total.num%>" >
+                          <%-obj.price.total.text%>
+                        </p>
+                      </div>
+                      <p class="mt-1 text-sm text-gray-500">Danh mục:<%-obj.menu.name%> | Thương hiệu:<%-obj.mark.name%> </p>
+                      <div class="flex items-center">
+                        <% obj.items.forEach(function(data, x) { %>
+                          <% if(x == 0){ %>
+                              <p class="mt-1 text-sm text-gray-500 mr-1">
+                                <span><%-data.type.name%>:</span> 
+                                  <% if(data.value.type == "color") { %>
+                                      <button class="w-[20px] ml-1 h-[20px] rounded-full flex justify-center items-center type-items" value="4" main="1" name="color_1">
+                                          <span class="w-[20px] h-[20px] rounded-full border" style="background: <%-data.value.text%>"></span>
+                                  </button>
+                                  <% } else { %>
+                                    <span> <%-data.value.text%></span> 
+                                  <% } %>
+                              </p>
+                          <% } else { %>
+                              <p class="ml-1 mr-1 text-sm text-gray-500">|</p>
+                              <p class="mt-1 text-sm text-gray-500 flex items-center">
+                                  <span><%-data.type.name%>:</span> 
+                                  <% if(data.value.type == "color") { %>
+                                      <button class="w-[20px] ml-1 h-[20px] rounded-full flex justify-center items-center type-items" value="4" main="1" name="color_1">
+                                          <span class="w-[20px] h-[20px] rounded-full border" style="background: <%-data.value.text%>"></span>
+                                  </button>
+                                  <% } else { %>
+                                    <span> <%-data.value.text%></span> 
+                                  <% } %>
+                              </p>
+                          <% } %>
+                      <% }); %>
+                      
+                    </div>
+                    </div>
+                    <div class="flex flex-1 items-end justify-between text-sm">
+                      <p class="text-gray-500">x<%-obj.quantity%></p>
+
+                      <div class="flex">
+                        <button
+                          type="button"
+                          class="font-medium text-indigo-600 hover:text-indigo-500 delete_product"
+                          product-id="<%-obj.id%>"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </li>
+       
+                <% });%>
+                <% if (cartItems.length == 0) { %>
+                  <li>Không có đơn hàng nào</li>
+                <%}%>
+
+                <!-- More products... -->
+              </ul>
+            </div>
+          </div>
+        </div>
+        <div class="border-t border-gray-200 px-4 py-6 sm:px-6">
+          <div class="flex justify-between text-base font-medium text-gray-900">
+            <p>Tổng giỏ hàng</p>
+            <p id="tongtien"><%-money%></p>
+          </div>
+          <p class="mt-0.5 text-sm text-gray-500">
+           Bạn sẽ chịu chi phí ship hàng ( lưu ý )
+          </p>
+          <div class="mt-6 flex items-center justify-between w-full">
+            <div></div>
+            <div class="flex items-center">
+              <form method="POST" action="/api/orders" data-ajax>
+              <button
+                type="submit"
+                class="flex items-center justify-center rounded-md border border-transparent bg-indigo-600 px-6 py-3 text-base font-medium text-white shadow-sm hover:bg-indigo-700"
+                >Thanh toán</button
+              >
+            </form>
+              <a
+                href="#"
+                id="reset"
+                class="flex ml-3 items-center justify-center rounded-md border border-gray-500 bg-white px-6 py-3 text-base font-medium text-black shadow-sm"
+                >Xóa tất cả</a
+              >
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-include('../layouts/footer')%> <%-include('../layouts/script')%>
+<script>
+    $('.delete_product').click(function(e) {
+      e.preventDefault();
+      const productId = $(this).attr("product-id");
+
+      let cartItems = getCookie('cartItems');
+      cartItems = cartItems ? JSON.parse(cartItems) : {
+          items: [],
+          total: 0
+      };
+
+      // Filter out the item with the specified ID
+      cartItems.items = cartItems.items.filter(item => item.id !== productId);
+
+      // Update the total quantity and cart display
+      const updatedTotal = cartItems.items.reduce((total, item) => total + item.quantity, 0);
+      cartItems.total = updatedTotal;
+      $("#Numcart").html(updatedTotal);
+      $(`#${productId}`).remove();
+      var money = 0;
+$(".money_cart").each(function() {
+    money += Number($(this).attr("value"));
+});
+      if (money == 0) {
+        $("ul#product_cart").html('<li>Không có đơn hàng nào</li>')
+      }
+      $("#tongtien").html(new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+      }).format(money));
+
+      const cartItemsJSON = JSON.stringify(cartItems);
+      setCookie('cartItems', cartItemsJSON, 7);
+  });
+
+  $("#reset").click(() => {
+      // Reset the cartItems object to initial values
+      const cartItems = {
+          items: [],
+          total: 0
+      };
+
+      // Clear the cartItems cookie
+      setCookie('cartItems', '', -1);
+
+      // Update the cart display
+      $("#Numcart").html(cartItems.total);
+      $("ul#product_cart").html('<li>Không có đơn hàng nào</li>')
+      $("#tongtien").html(new Intl.NumberFormat('vi-VN', {
+          style: 'currency',
+          currency: 'VND',
+      }).format(0));
+  });
+</script>
+<%-include('../layouts/end')%>

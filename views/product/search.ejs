@@ -1,0 +1,1205 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full pt-[10px]">
+  <div class="w-full pt-[30px] pb-[60px]">
+    <div class="w-full ml-3 mr-3 xl:ml-0 xl:mr-0">
+      <div class="max-w-7xl mx-auto">
+        <div class="w-full">
+          <div class="flex items-center text-[13px] text-black mb-[23px]">
+            <a href="/" class="capitalize"
+              ><img
+                src="https://i.imgur.com/FFjafxI.png"
+                alt=""
+                width="17"
+                height="17"
+                class="mx-1 mb-2"
+            /></a>
+            <span class="mx-1 capitalize">/</span>
+            <span class="mx-1 capitalize">Filter</span>
+          </div>
+        </div>
+        <div class="w-full lg:flex lg:space-x-[20px]">
+          <div class="lg:w-[250px]">
+            <div
+              class="w-full fixed lg:relative left-0 top-0 h-screen z-10 lg:h-auto overflow-y-scroll lg:overflow-y-auto bg-white px-[30px] hidden lg:block"
+            >
+              <div class="pb-5 border-b border-gray-border mt-5">
+                <div class="mb-[20px]">
+                  <h1 class="text-black text-base font-semibold">Khoảng giá</h1>
+                </div>
+                <div
+                  class="bg-gray-300"
+                  style="
+                    transform: scale(1);
+                    cursor: inherit;
+                    height: 3px;
+                    width: 100%;
+                  "
+                >
+                  <div
+                    class="bg-yellow-400 rounded-full"
+                    tabindex="0"
+                    id="min_rate"
+                    aria-valuemax="100000000"
+                    aria-valuemin="1000000"
+                    aria-valuenow="1000000"
+                    draggable="false"
+                    role="slider"
+                    style="
+                      position: absolute;
+                      z-index: 0;
+                      cursor: grab;
+                      user-select: none;
+                      touch-action: none;
+                      height: 10px;
+                      width: 10px;
+                      transform: translate(-5px, -3.5px);
+                    "
+                  ></div>
+                  <div
+                    class="bg-yellow-400 rounded-full"
+                    tabindex="0"
+                    aria-valuemax="100000000"
+                    aria-valuemin="1000000"
+                    aria-valuenow="100000000"
+                    draggable="false"
+                    id="max_rate"
+                    role="slider"
+                    style="
+                      position: absolute;
+                      z-index: 1;
+                      cursor: grab;
+                      user-select: none;
+                      touch-action: none;
+                      height: 10px;
+                      width: 10px;
+                      transform: translate(185px, -3.5px);
+                    "
+                  ></div>
+                </div>
+                <p class="text-xs text-black mt-5">
+                  Giá: 1.000.000 - 100.000.000
+                </p>
+              </div>
+              <div class="pb-5 border-b border-gray-border mt-5">
+                <div class="mb-[20px]">
+                  <h1 class="text-black text-base font-[500]">Loại</h1>
+                </div>
+                <ul>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" name="type" value="laptop" oninput="findSearch()" id="type_laptop" />
+                      <div>
+                        <label for="type_laptop" class="text-xs font-400 capitalize"
+                          >Máy tính</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+             
+                </ul>
+              </div>
+              <div class="pb-5 border-b border-gray-border mt-5">
+                <div class="mb-[20px]">
+                  <h1 class="text-black text-base font-[500]">Thương hiệu</h1>
+                </div>
+                <ul>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" value="MSI" oninput="findSearch()" name="mark"  id="mark_MSI" />
+                      <div>
+                        <label for="mark_MSI" class="text-xs font-400 capitalize"
+                          >MSI</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" value="Razer" oninput="findSearch()" name="mark"  id="mark_Razer" />
+                      <div>
+                        <label for="mark_Razer" class="text-xs font-400 capitalize"
+                          >Razer</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" value="Dell" oninput="findSearch()" name="mark"  id="mark_Dell" />
+                      <div>
+                        <label for="mark_Dell" class="text-xs font-400 capitalize"
+                          >Dell</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" value="Lenovo" oninput="findSearch()" name="mark"  id="mark_Lenovo" />
+                      <div>
+                        <label for="mark_Lenovo" class="text-xs font-400 capitalize"
+                          >Lenovo</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <span
+                    class="text-[#1990FF] cursor-pointer text-[0.75rem] text-center"
+                    >Xem thêm</span
+                  >
+                </ul>
+              </div>
+              <div class="pb-5 border-b border-gray-border mt-5">
+                <div class="mb-[20px]">
+                  <h1 class="text-black text-base font-[500]">Màu sắc</h1>
+                </div>
+                <ul>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" id="color_black" name="color" oninput="findSearch()" value="black" />
+                      <div>
+                        <label for="color_black" class="text-xs font-400 capitalize"
+                          >black</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" id="color_red" name="color" oninput="findSearch()" value="red" />
+                      <div>
+                        <label for="color_red" class="text-xs font-400 capitalize"
+                          >red</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" id="color_yellow" name="color" oninput="findSearch()" value="yellow" />
+                      <div>
+                        <label for="color_yellow" class="text-xs font-400 capitalize"
+                          >yellow</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                  <li class="mb-2">
+                    <div class="flex space-x-[10px] items-center">
+                      <input type="checkbox" id="color_white" name="color" oninput="findSearch()" value="white" />
+                      <div>
+                        <label for="color_white" class="text-xs font-400 capitalize"
+                          >white</label
+                        >
+                      </div>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="flex-1">
+            <div
+              class="w-full bg-white md:h-[70px] flex md:flex-row flex-col md:space-y-0 space-y-5 md:justify-between md:items-center p-[20px] mb-[20px]"
+            >
+              <div>
+                <p class="font-400 text-[13px]">
+                  <span class="text-gray"> Hiển thị</span> 1–7 trên 7 kết quả
+                </p>
+              </div>
+              <div class="flex space-x-1 items-center">
+                <div
+                  class="rounded-[4px] inline-block p-[0.5rem] select-none border border-solid bg-white relative overflow-hidden cursor-pointer product_items"
+                  id="rate_tang"
+                  style="border-color: rgb(224, 224, 224)"
+                >
+                  <div class="text-xs">Giá tăng dần</div>
+                </div>
+                <div
+                  class="rounded-[4px] inline-block p-[0.5rem] select-none border border-solid bg-white relative overflow-hidden cursor-pointer product_items"
+                  id="rate_giam"
+                  style="border-color: rgb(224, 224, 224)"
+                >
+                  <div class="text-xs">Giá giảm dần</div>
+                </div>
+                <div
+                  class="rounded-[4px] inline-block p-[0.5rem] select-none border border-solid bg-white relative overflow-hidden cursor-pointer product_items"
+                  id="new_sp"
+                  style="border-color: rgb(224, 224, 224)"
+                >
+                  <div class="text-xs">Sản phẩm mới nhất</div>
+                </div>
+              </div>
+              <button
+                type="button"
+                class="w-10 lg:hidden h-10 rounded flex justify-center items-center border border-yellow text-yellow"
+              >
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  class="h-6 w-6"
+                  fill="none"
+                  viewBox="0 0 24 24"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path
+                    stroke-linecap="round"
+                    stroke-linejoin="round"
+                    d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"
+                  ></path>
+                </svg>
+              </button>
+            </div>
+            <div class="grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 xl:grid-cols-5 gap-1 py-2">
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="bg-white p-2 flex flex-col h-full">
+                <div class="relative w-full h-full p-2 flex flex-col bg-white justify-between">
+                  <div class="relative flex-1 flex-grow-0 flex-shrink-0 mb-2">
+                    <div class="relative mb-1">
+                      <div class="relative pb-[100%]">
+                        <div class="inline-block overflow-hidden h-full w-full transition-transform duration-300 ease-in-out absolute inset-0 object-contain">
+                          <a href="#">
+                            <img src="https://res.cloudinary.com/djy3vgwfi/image/upload/v1703059160/nxvuv3czywdoudiqsyah.jpg" class="absolute top-0 left-0 absolut w-full h-full object-contain">
+                          </a>
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mb-1">
+                      <div class="border-gray-300 opacity-100 text-gray-500 font-semibold text-sm leading-[20px] overflow-hidden whitespace-nowrap overflow-ellipsis transition duration-300 ease-in-out delay-0s">
+                        Máy ảo
+                      </div>
+                    </div>
+                    <div class="border-gray-300 opacity-100 text-gray-600 font-normal text-sm leading-4 overflow-hidden">
+                      <a href="#">
+                        <h3 class="text-sm font-normal leading-4 overflow-hidden truncate">
+                          HH SERVER - DUAL XEON E5 2683v4 | 128G | RTX 2060 SUPER 8G
+                        </h3>
+                      </a>
+                    </div>
+        
+                    <div class="relative mt-1 mb-1 pr-0 flex items-center">
+                      <div class="flex flex-col items-start h-12">
+                        <div class="opacity-100 text-blue-700 font-bold text-xl leading-6 overflow-hidden whitespace-normal overflow-ellipsis mt-1">
+                          9.800.000
+                        </div>
+                        <div class="flex h-4">
+                          <div class="m-0.25 opacity-100 text-gray-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis line-through mt-1">
+                            9.999 đ
+                          </div>
+                          <div class="opacity-100 text-blue-500 font-normal text-sm leading-4 overflow-hidden overflow-ellipsis ml-2 mt-1">
+                            -97910%
+                          </div>
+                        </div>
+                      </div>
+                      <div class="ml-auto mr-3">
+                        <button class="w-8 h-8 text-[#1435c3] border-[1px] border-blue-400 rounded-full p-[11px] flex-shrink-0">
+                          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512" width="7" style="transform: scale(2.5)">
+                            <path d="M0 24C0 10.7 10.7 0 24 0H69.5c22 0 41.5 12.8 50.6 32h411c26.3 0 45.5 25 38.6 50.4l-41 152.3c-8.5 31.4-37 53.3-69.5 53.3H170.7l5.4 28.5c2.2 11.3 12.1 19.5 23.6 19.5H488c13.3 0 24 10.7 24 24s-10.7 24-24 24H199.7c-34.6 0-64.3-24.6-70.7-58.5L77.4 54.5c-.7-3.8-4-6.5-7.9-6.5H24C10.7 48 0 37.3 0 24zM128 464a48 48 0 1 1 96 0 48 48 0 1 1 -96 0zm336-48a48 48 0 1 1 0 96 48 48 0 1 1 0-96z" fill="currentColor"></path>
+                          </svg>
+                        </button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="mt-[1rem] opacity-1">
+              <div class="w-full text-center opacity-1">
+                <div class="inline-flex">
+                  <button
+                    class="bg-gray-200 z-[1] w-[2rem] h-[2rem] flex justify-center items-center rounded-[0.25rem] border border-solid border-[rgb(228, 229, 240)]"
+                    disabled
+                  >
+                    <svg
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      size="16"
+                      color="placeholder"
+                      height="16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M15.5 5L8.5 12L15.5 19"
+                        stroke="#82869E"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                  <button
+                    class="ml-[0.5rem] z-[1] w-[2rem] h-[2rem] flex justify-center items-center rounded-[0.25rem] bg-blue-700 text-white"
+                  >
+                    <div
+                      class="m-0 p-0 opacity-1 text-[13px] leading-[24px] overflow-hidden"
+                    >
+                      1
+                    </div>
+                  </button>
+                  <button
+                    class="ml-[0.5rem] z-[1] w-[2rem] h-[2rem] flex justify-center items-center rounded-[0.25rem] bg-white border border-solid border-[rgb(228, 229, 240)]"
+                  >
+                    <div
+                      class="m-0 p-0 opacity-1 text-[13px] leading-[24px] overflow-hidden"
+                    >
+                      2
+                    </div>
+                  </button>
+                  <button
+                    class="ml-[0.5rem] z-[1] w-[2rem] h-[2rem] flex justify-center items-center rounded-[0.25rem] bg-white border border-solid border-[rgb(228, 229, 240)]"
+                  >
+                    <div
+                      class="m-0 p-0 opacity-1 text-[13px] leading-[24px] overflow-hidden"
+                    >
+                      3
+                    </div>
+                  </button>
+                  <button
+                    class="bg-white ml-[0.5rem] z-[1] w-[2rem] h-[2rem] flex justify-center items-center rounded-[0.25rem] border border-solid border-[rgb(228, 229, 240)]"
+                  >
+                    <svg
+                      fill="none"
+                      viewBox="0 0 24 24"
+                      size="16"
+                      color="placeholder"
+                      height="16"
+                      width="16"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M8.5 19L15.5 12L8.5 5"
+                        stroke="#82869E"
+                        stroke-width="1.5"
+                        stroke-linecap="round"
+                        stroke-linejoin="round"
+                      ></path>
+                    </svg>
+                  </button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<%-include('../layouts/footer')%> <%-include('../layouts/script')%>
+<script>
+  var mySwiper = new Swiper('.swiper', {
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+    },
+  });
+</script>
+<script>
+  function findSearch() {
+    let min_rate = $('#min_rate').attr('aria-valuenow');
+    let max_rate = $('#max_rate').attr('aria-valuenow');
+
+    let rate_tang = $('#rate_tang').hasClass('active');
+    let rate_giam = $('#rate_giam').hasClass('active');
+    let new_sp = $('#new_sp').hasClass('active');
+
+    let mark = []; // Array to store selected marks
+    let color = [];
+    let type = [];
+
+    // Loop through all checkboxes with the name "mark[]"
+    $("[name='mark']:checked").each(function() {
+        mark.push($(this).val()); // Add the value of checked checkboxes to the array
+    });
+
+    $("[name='color']:checked").each(function() {
+        color.push($(this).val()); // Add the value of checked checkboxes to the array
+    });
+
+    
+    $("[name='type']:checked").each(function() {
+        type.push($(this).val()); // Add the value of checked checkboxes to the array
+    });
+
+    // Make AJAX request
+    $.ajax({
+      url: 'example.json',
+      type: 'POST',
+      dataType: 'json',
+      data: {
+        min_rate: min_rate,
+        max_rate:max_rate,
+        mark: JSON.stringify(mark),        
+        type: JSON.stringify(type),
+        color: JSON.stringify(color),
+        rate_tang:rate_tang,
+        rate_giam:rate_giam,
+        new_sp:new_sp,
+      },
+      success: function (data) {},
+      error: function (xhr, status, error) {
+        // Function to be called if the request fails
+        console.error(xhr.responseText); // Log error message to console
+        $('#result').html('Error: ' + xhr.status + ' - ' + xhr.statusText); // Display error message on the webpage
+      },
+    });
+  }
+  $('.product_items').click(function (e) {
+    if ($(this).hasClass('active')) {
+      $(this).removeClass('active');
+      $(this).css('border-color', 'rgb(224, 224, 224)');
+      $(this).find('>.active-items').remove();
+    } else {
+      $(this).addClass('active');
+      $(this).css('border-color', 'rgb(20, 53, 195)');
+      $(this).append(
+        `<div class="active-items"><div class="absolute top-[-1px] right-[-1px] w-0 h-0 border border-solid" style="border-color: transparent rgb(20, 53, 195) transparent transparent; border-width: 0px 20px 20px 0px;"></div><span class="flex absolute top-[-1px] right-[-1px] z-0"><svg fill="none" viewBox="0 0 24 24" size="14" class="css-1kpmq" color="#ffffff" height="12" width="12" xmlns="http://www.w3.org/2000/svg"><path d="M5 12.4545L9.375 17L19 7" stroke="#ffffff" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"></path></svg></span></div>`,
+      );
+    }
+    findSearch();
+  });
+  const sliders = document.querySelectorAll('[role="slider"]');
+
+  sliders.forEach((slider) => {
+    slider.addEventListener('mousedown', startDragging);
+    slider.addEventListener('touchstart', startDragging);
+
+    function startDragging(event) {
+      event.preventDefault();
+
+      const initialX =
+        event.type === 'mousedown' ? event.clientX : event.touches[0].clientX;
+      const initialLeft = parseFloat(
+        slider.style.transform.match(/translate\(([-\d.]+)px/)[1],
+      );
+
+      const minValue = parseFloat(slider.getAttribute('aria-valuemin'));
+      const maxValue = parseFloat(slider.getAttribute('aria-valuemax'));
+      const range = maxValue - minValue;
+
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('touchmove', drag);
+      document.addEventListener('mouseup', stopDragging);
+      document.addEventListener('touchend', stopDragging);
+
+      function drag(event) {
+        event.preventDefault();
+
+        const currentX =
+          event.type === 'mousemove' ? event.clientX : event.touches[0].clientX;
+        const diff = currentX - initialX;
+        let newLeft = initialLeft + diff;
+
+        // Constrain slider within the range
+        newLeft = Math.max(Math.min(newLeft, 185), -5);
+
+        // Calculate value based on position
+        const value = ((newLeft + 5) / 190) * range + minValue;
+
+        // Update slider position
+        slider.style.transform = `translate(${newLeft}px, -3.5px)`;
+
+        // Update aria-valuenow
+        slider.setAttribute('aria-valuenow', value);
+      }
+
+      function stopDragging(event) {
+        document.removeEventListener('mousemove', drag);
+        document.removeEventListener('touchmove', drag);
+        document.removeEventListener('mouseup', stopDragging);
+        document.removeEventListener('touchend', stopDragging);
+      }
+      findSearch()
+    }
+    
+  });
+</script>
+<%-include('../layouts/end')%>

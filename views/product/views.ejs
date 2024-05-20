@@ -1,0 +1,512 @@
+<%-include('../layouts/head')%> <%-include('../layouts/navbar')%>
+<div class="w-full pt-[10px]">
+  <div class="w-full px-2">
+    <div class="w-full">
+      <div class="bg-white pt-[30px] w-full">
+        <div class="w-full">
+          <div class="max-w-6xl mx-auto">
+            <div>
+              <div
+                class="flex items-center font-[400] text-[13px] text-black mb-[23px]"
+              >
+                <a href="/"
+                  ><span class="capitalize"
+                    ><img
+                      src="<%-get.menu.logo%>"
+                      alt=""
+                      width="17"
+                      height="17"
+                      class="mx-1 mb-1" /></span></a
+                ><span class="sperator">/</span
+                ><span
+                  ><a href="/single-product"
+                    ><span class="mx-1 capitalize"><%-get.menu.name%></span></a
+                  >/<span class="mx-1 capitalize"><%-get.mark.name%></span></span
+                >
+              </div>
+            </div>
+          </div>
+          <div class="w-full bg-white pb-[60px]">
+            <div class="max-w-6xl mx-auto">
+              <div class="w-full lg:flex justify-between">
+                <div
+                  data-aos="fade-right"
+                  class="lg:w-1/2 xl:mr-[70px] lg:mr-[50px]"
+                >
+                  <div class="w-full">
+                    <div
+                      class="w-full h-[600px] border border-gray flex justify-center items-center overflow-hidden relative mb-3"
+                    >
+                      <img
+                        src="<%-get.thumbnail[0].src%>"
+                        alt="Macbook Pro 14 M3 Max 2023 - Mới 100% chính hãng"
+                        class="object-contain"
+                        id="thumbnail"
+                      />
+                      <% if (get.discount.value != 0) {%>
+
+                        <div
+                        class="w-[80px] h-[80px] rounded-full bg-yellow-400 text-black flex justify-center items-center text-xl font-medium absolute left-[30px] top-[30px]"
+                      >
+                        <span>-<%-get.discount.value %><%-(get.discount.type == "%") ? "%" : "đ"%></span>
+                      </div>
+                        <%}%>
+                    
+                    </div>
+                    <div class="flex gap-2 flex-wrap">
+                      <% get.thumbnail.forEach(function(img) { %>
+                      <div
+                        class="w-[110px] h-[110px] p-[15px] border border-gray cursor-pointer view-thumbnail"
+                      >
+                        <img
+                          src="<%-img.src;%>"
+                          alt="Macbook Pro 14 M3 Max 2023 - Mới 100% chính hãng"
+                          class="w-full h-full object-contain"
+                        />
+                      </div>
+                      <%});%>
+                    </div>
+                  </div>
+                </div>
+                <div class="flex-1">
+                  <div class="product-details w-full mt-10 lg:mt-0">
+                    <span
+                      data-aos="fade-up"
+                      class="text-gray-500 text-xs font-normal mb-2 inline-block"
+                      ><%-get.menu.name%> / <%-get.mark.name%></span
+                    >
+                    <p
+                      data-aos="fade-up"
+                      class="text-xl font-medium text-black mb-4"
+                    >
+                    <%-get.name%>
+                    </p>
+                    <div
+                      data-aos="fade-up"
+                      class="flex space-x-[10px] items-center mb-6"
+                    >
+                      <div class="flex">
+                        <span
+                          ><svg
+                            width="18"
+                            height="17"
+                            viewBox="0 0 18 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                              fill="#FFA800"
+                            ></path></svg></span
+                        ><span>
+                          <svg
+                            width="18"
+                            height="17"
+                            viewBox="0 0 18 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                              fill="#FFA800"
+                            ></path>
+                          </svg>
+                        </span>
+                        <span>
+                          <svg
+                            width="18"
+                            height="17"
+                            viewBox="0 0 18 17"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M9 0L11.0206 6.21885H17.5595L12.2694 10.0623L14.2901 16.2812L9 12.4377L3.70993 16.2812L5.73056 10.0623L0.440492 6.21885H6.97937L9 0Z"
+                              fill="#FFA800"
+                            ></path>
+                          </svg>
+                        </span>
+                      </div>
+                      <span class="text-[13px] font-normal text-black"
+                        >1 Đánh giá</span
+                      >
+                    </div>
+                    <div
+                      data-aos="fade-up"
+                      class="flex space-x-2 items-center mb-3"
+                    >
+                     <% if (get.discount.value != 0) {%>
+
+                      <span
+                        class="text-sm font-500 text-gray-500 line-through mt-2"
+                        ><%-get.price.main.text%></span
+                      >
+                      <%}%>
+                      <span class="text-2xl font-500"><%-get.price.total.text%></span>
+                    </div>
+                    <%-get.content%>
+
+                    <% if(get.ListType.length != 0){ %>
+                      <% get.ListType.forEach(function(obj, m) { %>
+                          <% if(obj.type == 'color'){%>
+                              <div data-aos="fade-up" class="colors mt-4 mb-[30px]">
+                                  <span class="text-sm font-normal text-gray-500 mb-[14px] inline-block"><%-obj.name%></span>
+                                  <div class="flex space-x-2 items-center">
+                                      <% obj.data.forEach(function(ojj, stt) { %>
+                                          <div>
+                                              <button class="w-[20px] h-[20px] rounded-full flex justify-center items-center type-items"
+                                                  value="<%-stt%>"
+                                                  main="<%-m%>"
+                                                  name="color_<%-m%>"
+                                              >
+                                                  <span class="w-[20px] h-[20px] rounded-full border" style="background: <%-ojj%>"></span>
+                                              </button>
+                                          </div> 
+                                      <% });%>
+                                  </div>
+                              </div>
+                          <%}%>
+                          <% if(obj.type == 'text'){%>
+                              <div class="form-group product__option">   
+                                  <div data-aos="fade-up" class="colors mt-4 mb-[30px]">
+                                      <span class="text-sm font-normal text-gray-500 mb-[14px] inline-block"><%-obj.name%></span>
+                                      <div class="flex space-x-2 items-center">
+                                          <% obj.data.forEach(function(ojj, stt2) { %>
+                                              <div>
+                                                  <button class="w-[20px] h-[20px] rounded-md border border-black flex justify-center items-center type-items"
+                                                      value="<%-stt2%>"
+                                                      name="text_<%-m%>"
+                                                      main="<%-m%>"
+                                                  >
+                                                      <%-ojj%>
+                                                  </button>
+                                              </div> 
+                                          <% });%>
+                                      </div>
+                                  </div>
+                              </div>
+                          <% }%>
+                      <% });%>
+                  <% }%>
+                  
+            
+                    <div
+                      data-aos="fade-up"
+                      class="quantity-card-wrapper w-full flex items-center h-[50px] space-x-[10px] mb-[30px]"
+                    >
+                      <div
+                        class="w-[120px] h-full px-[26px] flex items-center border border-gray-border rounded-lg"
+                      >
+                        <div class="flex justify-between items-center w-full">
+                          <button
+                            type="button"
+                            class="text-base text-gray-500"
+                            id="tru"
+                          >
+                            -</button
+                          ><span class="text-black" id="quantity">1</span
+                          ><button
+                            type="button"
+                            id="cong"
+                            class="text-base text-gray-500"
+                          >
+                            +
+                          </button>
+                        </div>
+                      </div>
+                      <div class="flex-1 h-full">
+                        <button
+                        id="addCart"
+                          type="button"
+                          class="bg-black text-white text-sm font-semibold w-full h-full rounded-lg"
+                        >
+                          Thêm vào giỏ hàng
+                        </button>
+                      </div>
+                    </div>
+                    <div data-aos="fade-up" class="mb-[20px]">
+                      <p class="text-[13px] text-gray-500 leading-7">
+                        <span class="text-black">Danh mục :</span> Máy Tính
+                      </p>
+                      <p class="text-[13px] text-gray-500 leading-7">
+                        <span class="text-black">SKU:</span>
+                        <%-get._id%>
+                      </p>
+                    </div>
+                    <div
+                      data-aos="fade-up"
+                      class="flex space-x-2 items-center mb-[20px]"
+                    >
+                      <span
+                        ><svg
+                          width="12"
+                          height="13"
+                          viewBox="0 0 12 13"
+                          fill="none"
+                          xmlns="http://www.w3.org/2000/svg"
+                        >
+                          <path
+                            d="M0 0C0.247634 0 0.475436 0 0.729172 0C0.738324 0.160174 0.747477 0.316279 0.757647 0.493233C1.05816 0.392044 1.33885 0.282211 1.62818 0.203395C3.11296 -0.201361 4.51385 0.0366111 5.84202 0.779512C6.47661 1.13494 7.14171 1.39071 7.86987 1.47207C8.88125 1.58496 9.82093 1.35817 10.7098 0.88426C10.9335 0.765274 11.1522 0.636627 11.411 0.491199C11.4161 0.606117 11.4237 0.693577 11.4237 0.780529C11.4242 3.18822 11.4222 5.5954 11.4288 8.00309C11.4293 8.1892 11.3718 8.29089 11.2096 8.38039C9.31956 9.42279 7.4285 9.43499 5.54557 8.37734C4.06231 7.54443 2.55363 7.43307 0.992568 8.13835C0.804428 8.22327 0.737816 8.33005 0.739341 8.53904C0.749003 9.9206 0.744426 11.3027 0.744426 12.6842C0.744426 12.7849 0.744426 12.8851 0.744426 13C0.48764 13 0.254244 13 0 13C0 8.67582 0 4.34961 0 0Z"
+                            fill="#EB5757"
+                          ></path></svg></span
+                      ><button
+                        type="button"
+                        class="text-qred font-semibold text-[13px]"
+                      >
+                        Báo cáo
+                      </button>
+                    </div>
+                    <div
+                      data-aos="fade-up"
+                      class="social-share flex items-center w-full"
+                    >
+                      <span
+                        class="text-black text-[13px] mr-[17px] inline-block"
+                        >Chia sẻ</span
+                      >
+                      <div class="flex space-x-5 items-center">
+                        <span
+                          ><svg
+                            width="10"
+                            height="16"
+                            viewBox="0 0 10 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M3 16V9H0V6H3V4C3 1.3 4.7 0 7.1 0C8.3 0 9.2 0.1 9.5 0.1V2.9H7.8C6.5 2.9 6.2 3.5 6.2 4.4V6H10L9 9H6.3V16H3Z"
+                              fill="#3E75B2"
+                            ></path></svg></span
+                        ><span
+                          ><svg
+                            width="16"
+                            height="16"
+                            viewBox="0 0 16 16"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M8 0C3.6 0 0 3.6 0 8C0 11.4 2.1 14.3 5.1 15.4C5 14.8 5 13.8 5.1 13.1C5.2 12.5 6 9.1 6 9.1C6 9.1 5.8 8.7 5.8 8C5.8 6.9 6.5 6 7.3 6C8 6 8.3 6.5 8.3 7.1C8.3 7.8 7.9 8.8 7.6 9.8C7.4 10.6 8 11.2 8.8 11.2C10.2 11.2 11.3 9.7 11.3 7.5C11.3 5.6 9.9 4.2 8 4.2C5.7 4.2 4.4 5.9 4.4 7.7C4.4 8.4 4.7 9.1 5 9.5C5 9.7 5 9.8 5 9.9C4.9 10.2 4.8 10.7 4.8 10.8C4.8 10.9 4.7 11 4.5 10.9C3.5 10.4 2.9 9 2.9 7.8C2.9 5.3 4.7 3 8.2 3C11 3 13.1 5 13.1 7.6C13.1 10.4 11.4 12.6 8.9 12.6C8.1 12.6 7.3 12.2 7.1 11.7C7.1 11.7 6.7 13.2 6.6 13.6C6.4 14.3 5.9 15.2 5.6 15.7C6.4 15.9 7.2 16 8 16C12.4 16 16 12.4 16 8C16 3.6 12.4 0 8 0Z"
+                              fill="#E12828"
+                            ></path></svg></span
+                        ><span>
+                          <svg
+                            width="18"
+                            height="14"
+                            viewBox="0 0 18 14"
+                            fill="none"
+                            xmlns="http://www.w3.org/2000/svg"
+                          >
+                            <path
+                              d="M17.0722 1.60052C16.432 1.88505 15.7562 2.06289 15.0448 2.16959C15.7562 1.74278 16.3253 1.06701 16.5742 0.248969C15.8985 0.640206 15.1515 0.924742 14.3335 1.10258C13.6933 0.426804 12.7686 0 11.7727 0C9.85206 0 8.28711 1.56495 8.28711 3.48557C8.28711 3.7701 8.32268 4.01907 8.39382 4.26804C5.51289 4.12577 2.9165 2.73866 1.17371 0.604639C0.889175 1.13814 0.71134 1.70722 0.71134 2.34742C0.71134 3.5567 1.31598 4.62371 2.27629 5.26392C1.70722 5.22835 1.17371 5.08608 0.675773 4.83711V4.87268C0.675773 6.5799 1.88505 8.00258 3.48557 8.32268C3.20103 8.39382 2.88093 8.42938 2.56082 8.42938C2.34742 8.42938 2.09845 8.39382 1.88505 8.35825C2.34742 9.74536 3.62784 10.7768 5.15722 10.7768C3.94794 11.7015 2.45412 12.2706 0.818041 12.2706C0.533505 12.2706 0.248969 12.2706 0 12.2351C1.56495 13.2309 3.37887 13.8 5.37062 13.8C11.8082 13.8 15.3294 8.46495 15.3294 3.84124C15.3294 3.69897 15.3294 3.52113 15.3294 3.37887C16.0052 2.9165 16.6098 2.31186 17.0722 1.60052Z"
+                              fill="#3FD1FF"
+                            ></path>
+                          </svg>
+                        </span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div
+        class="max-w-6xl mx-auto w-full lg:flex justify-between"
+      >
+        <div class="lg:w-1/2 xl:mr-[70px] lg:mr-[50px]">
+          <div class="tab-buttons w-full mb-3 mt-5 sm:mt-0">
+            <div class="max-w-6xl mx-auto">
+              <ul class="flex space-x-12">
+                <li>
+                  <span
+                    class="py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer border-yellow-400 text-black" data-tab="#mota"
+                    >Mô tả</span
+                  >
+                </li>
+                <li>
+                  <span
+                    class="py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer" data-tab="#danhgia"
+                    >Đánh giá</span
+                  >
+                </li>
+                <li>
+                  <span
+                    class="py-[15px] sm:text-[15px] text-sm sm:block border-b font-medium cursor-pointer" data-tab="#thongso"
+                    >Thông số</span
+                  >
+                </li>
+              </ul>
+            </div>
+            <div
+              class="w-full h-[1px] bg-[#E8E8E8] absolute left-0 sm:top-[50px] top-[36px] -z-10"
+            ></div>
+          </div>
+          <div class="w-full min-h-[400px]" >
+            <div class="max-w-6xl mx-auto main-content" id="mota">
+              <div
+                class="w-full tab-contents bg-content overflow-hidden relative"
+                style="max-height: 550px; height:150px"
+              >
+                <%-get.description%>
+              </div>
+              <div class="text-center p-[16px]" id="btn-content">
+                <button
+                  class="bg-white color-[#1988EC] font-[500] rounded-[10px] m-auto max-w-[126px] w-full text-[15px] leading-[36px] more"
+                  style="
+                    display: block;
+                    box-shadow: rgb(25, 136, 236) 0px 0px 0px 1px;
+                    cursor: pointer;
+                  "
+                >
+                  <div style="color: rgb(25, 136, 236)">
+                    Xem thêm
+                    <i class="fas fa-angle-down" aria-hidden="true"></i>
+                  </div>
+                </button>
+              </div>
+            </div>
+            <div class="max-w-6xl mx-auto main-content" id="danhgia" style="display:none">
+                sdfs
+              </div>
+              <div class="max-w-6xl mx-auto main-content" id="thongso" style="display:none">
+                <%-get.show%>
+
+              </div>
+          </div>
+        </div>
+        <div class="flex-1">
+        
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<style>
+  .bg-content:before {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, #fff);
+    height: 200px;
+  }
+</style>
+
+<%-include('../layouts/footer')%> <%-include('../layouts/script')%>
+<script>
+
+let cartItems = getCookie('cartItems');
+cartItems = cartItems ? JSON.parse(cartItems) : { items: [], total: 0 };
+const productId = "<%-get._id;%>";
+
+$('#addCart').click(function (e) {
+    var names = []; 
+    var value = [];
+    var anyInactive = false; // Biến để kiểm tra xem có phần tử nào không có class "active" không
+    
+    $(".type-items").each(function() {
+        var nameValue = $(this).attr("name");
+        if (names.indexOf(nameValue) === -1) {
+            names.push(nameValue);
+        }
+    });
+    
+    $.each(names, function(index, name) {
+        var item = $(`.type-items[name="${name}"]`);
+        if (item.hasClass("active")) {
+            value.push({
+                type: name,
+                main: item.attr("main"),
+                value: item.attr("value")
+            });
+        } else {
+            anyInactive = true; // Đặt cờ hiệu đã phát hiện phần tử không active
+        }
+    });
+    
+    // Kiểm tra số lượng (quantity) phải lớn hơn 0
+    const productQuantity = Number($("#quantity").html());
+    if (productQuantity <= 0) {
+        FuiToast.error('Số lượng phải lớn hơn 0.');
+        return; // Dừng hàm nếu số lượng không hợp lệ
+    }
+    
+    if (anyInactive) {
+        FuiToast.error('Vui lòng chọn đầy đủ thông tin quan trọng.');
+    } else {
+        const newProduct = { 
+            id: productId,
+            quantity: parseInt(productQuantity),
+            items: value
+        };
+        cartItems.items.push(newProduct);
+
+        cartItems.total += parseInt(productQuantity);
+  
+        const cartItemsJSON = JSON.stringify(cartItems);
+        setCookie('cartItems', cartItemsJSON, 7);
+        console.log(cartItemsJSON);
+        FuiToast.success('Đã thêm vào giỏ hàng.');
+        $("#Numcart").html(cartItems.total)
+    }
+});
+
+
+  $('.view-thumbnail').click(function (e) {
+    $('#thumbnail').attr('src', $(this).find('>img').attr('src'));
+  });
+
+  $('.view-thumbnail').click(function (e) {
+    $('#thumbnail').attr('src', $(this).find('>img').attr('src'));
+  });
+  $('.type-items').click(function (e) {
+    $(`.type-items[name="${$(this).attr("name")}"]`).removeClass('ring-2 ring-offset-2 active');
+    $(this).toggleClass('ring-2 ring-offset-2 active');
+  });
+
+  $('#cong').click(function (e) {
+    let quantity = Number($('#quantity').html()) +1;
+    $('#quantity').html(quantity);
+  });
+  
+  $('#tru').click(function (e) {
+    let quantity = Number($('#quantity').html());
+    if (quantity > 1) {
+      $('#quantity').html(quantity - 1);
+    } else {
+      FuiToast.error('Số lượng phải lớn hơn 1.');
+    }
+  });
+
+  $(document).on('click', '.more', function (e) {
+    $('.tab-contents').removeClass('bg-content').css('max-height', 'unset');
+    $('#btn-content').html(
+      `<button class="record bg-white color-[#1988EC] font-[500] rounded-[10px] m-auto max-w-[126px] w-full text-[15px] leading-[36px]" style="display: block; box-shadow: rgb(25, 136, 236) 0px 0px 0px 1px; cursor: pointer;"><div style="color: rgb(25, 136, 236)">Thu gọn<i class="fas fa-angle-up" aria-hidden="true"></i></div></button>`,
+    );
+  });
+
+  $(document).on('click', '.record', function (e) {
+    $('#btn-content').html(
+      `<button class="bg-white color-[#1988EC] font-[500] rounded-[10px] m-auto max-w-[126px] w-full text-[15px] leading-[36px] more" style="display: block; box-shadow: rgb(25, 136, 236) 0px 0px 0px 1px; cursor: pointer;"><div style="color: rgb(25, 136, 236)">Xem thêm<i class="fas fa-angle-down" aria-hidden="true"></i></div></button>`,
+    );
+    $('.tab-contents').addClass('bg-content').css('max-height', '550px');
+  });
+
+  $('[data-tab]').click(function (e) {
+    $('[data-tab]').removeClass("border-yellow-400 text-black active");
+
+    $('.main-content').fadeOut(200);
+    $(`.main-content${$(this).attr("data-tab")}`).fadeIn(200);
+
+    $(this).addClass("border-yellow-400 text-black active");
+
+  });
+
+
+  
+  
+</script>
+<%-include('../layouts/end')%>
